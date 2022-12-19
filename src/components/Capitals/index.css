@@ -1,0 +1,52 @@
+/* Write your CSS here */
+.main-container {
+  background-color: #93c5fd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.countries-container {
+  background-color: #f8fafc;
+  border-radius: 20px;
+  padding: 50px;
+  width: 50%;
+}
+
+.heading-style {
+  color: #1e293b;
+  font-family: roboto;
+}
+
+.dropbox-style {
+  width: 24%;
+  margin-right: 10px;
+  padding: 5px;
+  font-family: roboto;
+  font-weight: bold;
+}
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+}
+
+.option-style {
+  color: #000000;
+  font-style: roboto;
+}
+
+.question-style {
+  color: #323f4b;
+}
+
+.country-name {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.selected-capital-style {
+  font-weight: bold;
+}
