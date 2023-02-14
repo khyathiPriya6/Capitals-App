@@ -31,25 +31,23 @@ const countryAndCapitalsList = [
 ]
 
 class Capitals extends Component {
-  state = {activeCountry: countryAndCapitalsList[0]}
+  state = {activeCountry: countryAndCapitalsList[0].id}
 
   changeStateValue = event => {
-    const selectedCapital = event.target.value
-    this.gettingCountryDetails(selectedCapital)
+    this.setState({activeCountry: event.target.value})
   }
 
-  gettingCountryDetails = selectedCapital => {
+  gettingCountryDetails = selectedCapitalId => {
     const displayCountryDetails = countryAndCapitalsList.find(
-      eachItem => eachItem.capitalDisplayText === selectedCapital,
+      eachItem => eachItem.id === selectedCapitalId,
     )
-    console.log(displayCountryDetails)
-    this.setState({activeCountry: displayCountryDetails})
+    return displayCountryDetails
   }
 
   render() {
     const {activeCountry} = this.state
-    const updatedCountryId = activeCountry.id
-    // const capitalId = activeCountry.id
+    const updatedCountry = this.gettingCountryDetails(activeCountry)
+    console.log(activeCountry)
     return (
       <div className="main-container">
         <div className="countries-container">
@@ -57,18 +55,22 @@ class Capitals extends Component {
           <div className="dropdown-container">
             <select
               className="dropbox-style"
+              value={activeCountry}
               onChange={this.changeStateValue}
-              value={updatedCountryId}
             >
               {countryAndCapitalsList.map(eachItem => (
-                <option className="option-style" key={eachItem.id}>
+                <option
+                  className="option-style"
+                  value={eachItem.id}
+                  key={eachItem.id}
+                >
                   {eachItem.capitalDisplayText}
                 </option>
               ))}
             </select>
             <p className="question-style"> is capital of which country</p>
           </div>
-          <p className="country-name">{activeCountry.country}</p>
+          <p className="country-name">{updatedCountry.country}</p>
         </div>
       </div>
     )
